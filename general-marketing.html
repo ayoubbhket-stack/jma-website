@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>General Marketing Course — Job Market Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{--bg:#0a0a0a;--card:#141414;--card2:#1e1e1e;--accent:#C41E3A;--accent2:#e63950;--text:#f5f5f5;--muted:#888888;--border:#2a2a2a;--grad:linear-gradient(135deg,#C41E3A,#8B0000);}
+  html,body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,10,10,0.96);backdrop-filter:blur(10px);z-index:50;}
+  .nav-left{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .nav-logo{width:44px;height:44px;border-radius:9px;overflow:hidden;border:1px solid rgba(196,30,58,0.3);}
+  .nav-logo img{width:100%;height:100%;object-fit:cover;}
+  .nav-name{font-size:15px;font-weight:700;color:var(--text);}
+  .nav-sub{font-size:11px;color:var(--muted);}
+  .nav-links{display:flex;align-items:center;gap:4px;}
+  .nav-link{color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;padding:7px 14px;border-radius:8px;transition:color .2s,background .2s;}
+  .nav-link:hover,.nav-link.active{color:var(--accent2);}
+  .nav-link:hover{background:rgba(255,255,255,0.06);}
+  .dropdown{position:relative;}
+  .dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:8px;min-width:200px;z-index:100;}
+  .dropdown:hover .dropdown-menu{display:block;}
+  .dropdown-item{display:block;padding:10px 14px;font-size:13px;color:var(--muted);text-decoration:none;border-radius:8px;transition:color .2s,background .2s;}
+  .dropdown-item:hover{color:var(--text);background:rgba(255,255,255,0.06);}
+  .nav-cta{background:var(--grad);color:#fff;font-size:13px;font-weight:500;padding:8px 18px;border-radius:8px;text-decoration:none;}
+  .mobile-menu{display:none;gap:8px;overflow-x:auto;padding:12px 16px;border-bottom:1px solid var(--border);}
+  .mobile-link{white-space:nowrap;color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;padding:7px 14px;border-radius:8px;background:var(--card);}
+  .mobile-link.active{color:var(--accent2);border:1px solid rgba(196,30,58,0.3);}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .divider{height:1px;background:var(--border);}
+  .section{padding:60px 0;}
+  .section-label{font-size:11px;font-weight:600;letter-spacing:0.14em;color:var(--accent2);text-transform:uppercase;margin-bottom:12px;}
+  .section-title{font-size:26px;font-weight:700;margin-bottom:12px;}
+  .section-sub{font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.7;}
+  .hero{padding:60px 24px;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(196,30,58,0.13),transparent);}
+  .hero-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 360px;gap:48px;align-items:start;}
+  .hero-badge{display:inline-block;background:rgba(196,30,58,0.15);border:1px solid rgba(196,30,58,0.35);color:var(--accent2);font-size:12px;font-weight:600;padding:5px 16px;border-radius:20px;margin-bottom:20px;}
+  .hero-title{font-size:36px;font-weight:700;margin-bottom:16px;line-height:1.2;letter-spacing:-0.02em;}
+  .hero-title span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-desc{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:28px;}
+  .hero-meta{display:flex;gap:12px;flex-wrap:wrap;}
+  .hero-meta-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);}
+  .hero-meta-item strong{color:var(--text);}
+  .course-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;position:sticky;top:90px;}
+  .hero-price{font-size:36px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;}
+  .hero-price-note{font-size:13px;color:var(--muted);margin-bottom:22px;}
+  .btn-enroll{display:block;width:100%;background:var(--grad);color:#fff;border:none;padding:15px;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;text-align:center;transition:opacity .2s,transform .2s;margin-bottom:10px;}
+  .btn-enroll:hover{opacity:.88;transform:translateY(-2px);}
+  .btn-wa{display:block;width:100%;background:transparent;color:var(--text);border:1px solid var(--border);padding:13px;border-radius:12px;font-size:14px;font-weight:500;text-decoration:none;text-align:center;transition:border-color .2s;}
+  .btn-wa:hover{border-color:#25d366;}
+  .guarantee{font-size:12px;color:var(--muted);margin-top:12px;text-align:center;}
+  .instructor-grid{display:grid;grid-template-columns:260px 1fr;gap:36px;align-items:center;}
+  .instructor-photo{width:100%;border-radius:16px;overflow:hidden;border:1px solid var(--border);}
+  .instructor-photo img{width:100%;display:block;object-fit:cover;}
+  .instructor-badge{display:inline-block;background:rgba(196,30,58,0.15);border:1px solid rgba(196,30,58,0.3);color:var(--accent2);font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
+  .instructor-name{font-size:24px;font-weight:700;margin-bottom:6px;}
+  .instructor-title{font-size:14px;color:var(--muted);margin-bottom:16px;}
+  .instructor-desc{font-size:14px;color:var(--muted);line-height:1.8;}
+  .instructor-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;}
+  .inst-stat{background:var(--card2);border-radius:10px;padding:14px;text-align:center;}
+  .inst-stat-num{font-size:20px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .inst-stat-label{font-size:11px;color:var(--muted);margin-top:4px;}
+  .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:0;}
+  .gallery-img{border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+  .gallery-img img{width:100%;display:block;object-fit:cover;}
+  .learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .learn-item{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;}
+  .learn-icon{font-size:20px;flex-shrink:0;}
+  .learn-text{font-size:13px;color:var(--muted);line-height:1.6;}
+  .includes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;}
+  .include-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;}
+  .include-icon{font-size:28px;margin-bottom:8px;}
+  .include-title{font-size:13px;font-weight:600;margin-bottom:4px;}
+  .include-desc{font-size:12px;color:var(--muted);}
+  .feedback-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+  .feedback-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:transform .2s,border-color .2s;}
+  .feedback-card:hover{transform:translateY(-3px);border-color:rgba(196,30,58,0.4);}
+  .feedback-card img{width:100%;display:block;object-fit:cover;}
+  .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:999;align-items:center;justify-content:center;}
+  .lightbox.active{display:flex;}
+  .lightbox img{max-width:90vw;max-height:90vh;border-radius:12px;object-fit:contain;}
+  .lightbox-close{position:absolute;top:20px;right:24px;font-size:32px;color:#fff;cursor:pointer;}
+  .footer{text-align:center;padding:32px 24px;font-size:13px;color:var(--muted);border-top:1px solid var(--border);}
+  .footer span{color:var(--accent2);}
+  .wa-float{position:fixed;bottom:28px;left:28px;width:54px;height:54px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 4px 24px rgba(37,211,102,0.45);transition:transform .2s;z-index:98;}
+  .wa-float:hover{transform:scale(1.1);}
+  @media(max-width:768px){
+    .nav-links{display:none;}.mobile-menu{display:flex;}.nav{padding:12px 16px;}
+    .hero-inner{grid-template-columns:1fr;}.course-card{position:static;}
+    .instructor-grid{grid-template-columns:1fr;text-align:center;}
+    .instructor-photo{max-width:220px;margin:0 auto;}
+    .learn-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:1fr;}
+    .hero-title{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-left">
+    <div class="nav-logo"><img src="544896797_776477835123313_4289245328622816838_n.jpg" alt="JMA"></div>
+    <div><div class="nav-name">Job Market Academy</div><div class="nav-sub">E-Marketing Courses</div></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <div class="dropdown">
+      <a href="#" class="nav-link active">Courses ▾</a>
+      <div class="dropdown-menu">
+        <a href="medical-marketing.html" class="dropdown-item">🏥 Medical Marketing</a>
+        <a href="general-marketing.html" class="dropdown-item">📢 General Marketing</a>
+      </div>
+    </div>
+    <a href="management.html" class="nav-link">Management</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  <a href="https://wa.me/201555227040" class="nav-cta" target="_blank">Get Started</a>
+</nav>
+<div class="mobile-menu">
+  <a href="index.html" class="mobile-link">Home</a>
+  <a href="medical-marketing.html" class="mobile-link">Medical</a>
+  <a href="general-marketing.html" class="mobile-link active">General</a>
+  <a href="management.html" class="mobile-link">Management</a>
+  <a href="contact.html" class="mobile-link">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">📢 GENERAL MARKETING</div>
+      <h1 class="hero-title">General Marketing<br><span>Course</span></h1>
+      <p class="hero-desc">A comprehensive digital marketing course for business owners, marketers, and entrepreneurs who want to master online advertising, content creation, and campaign management across all major platforms.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">📍 <strong>In-Person or Online</strong></div>
+        <div class="hero-meta-item">⏰ <strong>4 Hours/Session</strong></div>
+        <div class="hero-meta-item">🎥 <strong>Full Recordings</strong></div>
+        <div class="hero-meta-item">💰 <strong>Money-Back Guarantee</strong></div>
+      </div>
+    </div>
+    <div class="course-card">
+      <div class="hero-price">3,000 EGP</div>
+      <div class="hero-price-note">Full course — all sessions included</div>
+      <a href="https://wa.me/201555227040?text=I want to enroll in the General Marketing Course" class="btn-enroll" target="_blank">Enroll Now 🎓</a>
+      <a href="https://wa.me/201555227040" class="btn-wa" target="_blank">💬 Ask a Question</a>
+      <div class="guarantee">💰 Full money-back guarantee after course completion</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="section-label">Your Instructor</div>
+    <div class="instructor-grid">
+      <div class="instructor-photo">
+        <img src="515541552_724252107012553_2515505771686857748_n.jpg" alt="Eng. Abdelrahman Bahgat">
+      </div>
+      <div>
+        <div class="instructor-badge">Lead Instructor</div>
+        <div class="instructor-name">Eng. Abdelrahman Bahgat</div>
+        <div class="instructor-title">E-Marketing Specialist — General Division</div>
+        <div class="instructor-desc">With extensive experience in digital marketing, Eng. Abdelrahman Bahgat has helped hundreds of businesses and entrepreneurs build their online presence and grow through data-driven strategies. His teaching approach is practical, straightforward, and focused on real results.</div>
+        <div class="instructor-stats">
+          <div class="inst-stat"><div class="inst-stat-num">10+</div><div class="inst-stat-label">Years Experience</div></div>
+          <div class="inst-stat"><div class="inst-stat-num">200+</div><div class="inst-stat-label">Students Trained</div></div>
+          <div class="inst-stat"><div class="inst-stat-num">4⭐</div><div class="inst-stat-label">Avg. Rating</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="section-label">Inside the Course</div>
+    <div class="section-title">Real Sessions. Real Learning.</div>
+    <div class="gallery-grid">
+      <div class="gallery-img"><img src="484375023_642948351809596_2379486675925071281_n.jpg" alt="Course Session" loading="lazy"></div>
+      <div class="gallery-img"><img src="492457977_673663955404702_1700665437569373042_n.jpg" alt="Course Session" loading="lazy"></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="section-label">Course Content</div>
+    <div class="section-title">What You'll Learn</div>
+    <div class="section-sub">8 practical modules covering everything you need to market your business effectively online.</div>
+    <div class="learn-grid">
+      <div class="learn-item"><div class="learn-icon">🎯</div><div class="learn-text"><strong>Marketing Strategy</strong><br>Build a complete digital marketing strategy tailored to your business goals.</div></div>
+      <div class="learn-item"><div class="learn-icon">💰</div><div class="learn-text"><strong>Budget Planning</strong><br>Set and manage your marketing budget effectively across all channels.</div></div>
+      <div class="learn-item"><div class="learn-icon">✍️</div><div class="learn-text"><strong>Content Creation</strong><br>Write professional content that attracts and converts your target audience.</div></div>
+      <div class="learn-item"><div class="learn-icon">👥</div><div class="learn-text"><strong>Audience Targeting</strong><br>Target the right customers using advanced ad tools across all platforms.</div></div>
+      <div class="learn-item"><div class="learn-icon">📢</div><div class="learn-text"><strong>Ad Campaigns</strong><br>Launch campaigns across Meta, Google, TikTok and more that deliver results.</div></div>
+      <div class="learn-item"><div class="learn-icon">📊</div><div class="learn-text"><strong>Campaign Analysis</strong><br>Track, analyze and optimize your campaigns for maximum performance.</div></div>
+      <div class="learn-item"><div class="learn-icon">🔍</div><div class="learn-text"><strong>SEO & Keywords</strong><br>Choose the right keywords and appear in top results on search engines.</div></div>
+      <div class="learn-item"><div class="learn-icon">🧠</div><div class="learn-text"><strong>Customer Behavior</strong><br>Understand how customers in Egypt search, decide, and convert online.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="section-label">What's Included</div>
+    <div class="section-title">Everything You Need to Succeed</div>
+    <div class="includes-grid">
+      <div class="include-item"><div class="include-icon">📍</div><div class="include-title">Flexible Attendance</div><div class="include-desc">In-person or online from anywhere</div></div>
+      <div class="include-item"><div class="include-icon">🎥</div><div class="include-title">Full Recordings</div><div class="include-desc">Full video recording after every session</div></div>
+      <div class="include-item"><div class="include-icon">💬</div><div class="include-title">Q&A Support</div><div class="include-desc">Questions answered during and after lectures</div></div>
+      <div class="include-item"><div class="include-icon">💰</div><div class="include-title">Money-Back Guarantee</div><div class="include-desc">Full refund after completing the course</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section">
+    <div class="section-label">Student Reviews</div>
+    <div class="section-title">What Our Students Say</div>
+    <div class="section-sub">Real feedback from real students who completed the General Marketing Course.</div>
+    <div class="feedback-grid">
+      <div class="feedback-card" onclick="openLightbox('510468765_715551481215949_6711131624615844851_n.jpg')"><img src="510468765_715551481215949_6711131624615844851_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('511367339_715551431215954_387292628057908643_n.jpg')"><img src="511367339_715551431215954_387292628057908643_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('555513914_792564003514696_5551642869964794658_n.jpg')"><img src="555513914_792564003514696_5551642869964794658_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('555821117_792564170181346_7432018179292501353_n.jpg')"><img src="555821117_792564170181346_7432018179292501353_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('555911722_792564133514683_1945319559486060044_n.jpg')"><img src="555911722_792564133514683_1945319559486060044_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('556251861_792564070181356_4633883425292053392_n.jpg')"><img src="556251861_792564070181356_4633883425292053392_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('557499950_792564036848026_8269118800623930171_n.jpg')"><img src="557499950_792564036848026_8269118800623930171_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('558788363_805210122250084_3586745711313365882_n.jpg')"><img src="558788363_805210122250084_3586745711313365882_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('612680018_874995881938174_7748536289164509187_n.jpg')"><img src="612680018_874995881938174_7748536289164509187_n.jpg" alt="Feedback" loading="lazy"></div>
+      <div class="feedback-card" onclick="openLightbox('613047708_874995861938176_4928676471866098983_n.jpg')"><img src="613047708_874995861938176_4928676471866098983_n.jpg" alt="Feedback" loading="lazy"></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="wrap">
+  <div class="section" style="text-align:center;">
+    <div class="section-label">Ready to Start?</div>
+    <div class="section-title">Join the General Marketing Course Today</div>
+    <div class="section-sub">Limited seats available. Secure your spot now.</div>
+    <a href="https://wa.me/201555227040?text=I want to enroll in the General Marketing Course" class="btn-enroll" style="max-width:300px;margin:0 auto;" target="_blank">Enroll Now — 3,000 EGP 🎓</a>
+    <div class="guarantee" style="margin-top:16px;">💰 Full money-back guarantee after course completion</div>
+  </div>
+</div>
+
+<footer class="footer">© 2026 <span>Job Market Academy</span> — All Rights Reserved</footer>
+<a class="wa-float" href="https://wa.me/201555227040" target="_blank">💬</a>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close">✕</div>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+function openLightbox(src){ document.getElementById('lightbox-img').src=src; document.getElementById('lightbox').classList.add('active'); }
+function closeLightbox(){ document.getElementById('lightbox').classList.remove('active'); }
+</script>
+</body>
+</html>
